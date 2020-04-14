@@ -1,4 +1,5 @@
 interface Country {
   name: string;
-  area: number;
+  area: number | undefined; // [km^2]
+  population: number;
 }
