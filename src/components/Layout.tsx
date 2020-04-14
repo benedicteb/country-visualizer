@@ -23,6 +23,7 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => (
         <Link to={"/languages"}>Languages</Link>
         <a
           href={"https://github.com/benedicteb/country-visualizer"}
+          rel={"noopener noreferrer"}
           target={"_blank"}
         >
           Code
