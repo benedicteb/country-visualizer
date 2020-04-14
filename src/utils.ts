@@ -5,7 +5,7 @@ const kilometerSquaredToMilSquared = (kilometer: number): number => {
 };
 
 const downloadListOfCountries = (
-  fields = ["name", "area", "population"]
+  fields = ["name", "area", "population", "region"]
 ): Promise<Country[]> => {
   return fetch(`${ALL_COUNTRIES_URL}?fields=${fields.join(";")}`)
     .then(response => {

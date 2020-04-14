@@ -53,6 +53,33 @@ const Table: FC<{ initialCountries: Country[] | [] }> = ({
                 countries
                   .slice()
                   .sort((a, b) =>
+                    ascending(a.region.toLowerCase(), b.region.toLowerCase())
+                  )
+              );
+
+              setCurrentSortMethod(SortMethods.Region);
+            }}
+            onSortDescending={() => {
+              setCountries(
+                countries
+                  .slice()
+                  .sort((a, b) =>
+                    descending(a.region.toLowerCase(), b.region.toLowerCase())
+                  )
+              );
+
+              setCurrentSortMethod(SortMethods.Region);
+            }}
+            active={currentSortMethod === SortMethods.Region}
+          >
+            Region
+          </SortableTableHeaderCell>
+          <SortableTableHeaderCell
+            onSortAscending={() => {
+              setCountries(
+                countries
+                  .slice()
+                  .sort((a, b) =>
                     ascending(
                       a.area === undefined ? -1 : a.area,
                       b.area === undefined ? -1 : b.area
@@ -109,6 +136,7 @@ const Table: FC<{ initialCountries: Country[] | [] }> = ({
         {countries.map(country => (
           <tr key={country.name}>
             <td>{country.name}</td>
+            <td>{country.region}</td>
             <td>
               {country.area !== undefined
                 ? `${Math.round(
