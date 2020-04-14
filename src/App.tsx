@@ -9,6 +9,7 @@ import LanguageUsePage from "./pages/LanguageUsePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const App: FC = () => {
+  const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState<Country[] | []>([]);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const App: FC = () => {
       }
 
       setCountries(countries);
+      setLoading(false);
     };
 
     asyncEffect();
@@ -30,21 +32,29 @@ const App: FC = () => {
   return (
     <Router>
       <Layout>
-        <Switch>
-          <Route exact path={"/"}>
-            <CountryTablePage countries={countries} />
-          </Route>
-          <Route path="/summary">
-            <SummaryPage countries={countries} />
-          </Route>
-          <Route path={"/languages"}>
-            <LanguageUsePage countries={countries} />
-          </Route>
+        {loading ? (
+          <Switch>
+            <Route path={"*"}>
+              <p>Loading...</p>
+            </Route>
+          </Switch>
+        ) : (
+          <Switch>
+            <Route exact path={"/"}>
+              <CountryTablePage countries={countries} />
+            </Route>
+            <Route path="/summary">
+              <SummaryPage countries={countries} />
+            </Route>
+            <Route path={"/languages"}>
+              <LanguageUsePage countries={countries} />
+            </Route>
 
-          <Route path={"*"}>
-            <NotFoundPage />
-          </Route>
-        </Switch>
+            <Route path={"*"}>
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        )}
       </Layout>
     </Router>
   );
