@@ -34,3 +34,21 @@ td,th {
 nav a {
   margin-left: 10px;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-wrap: wrap;
+}
+
+@media(max-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

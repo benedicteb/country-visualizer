@@ -3,16 +3,7 @@ import { Link } from "react-router-dom";
 
 const Layout: FC<{ children?: ReactNode }> = ({ children }) => (
   <>
-    <header
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingLeft: "15px",
-        paddingRight: "15px"
-      }}
-    >
+    <header>
       <h1 style={{ padding: 0, margin: 0 }}>
         <Link to={"/"}>country visualizer</Link>
       </h1>
