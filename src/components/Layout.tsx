@@ -21,6 +21,12 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => (
         <Link to={"/"}>Countries</Link>
         <Link to={"/summary"}>Summary</Link>
         <Link to={"/languages"}>Languages</Link>
+        <a
+          href={"https://github.com/benedicteb/country-visualizer"}
+          target={"_blank"}
+        >
+          Code
+        </a>
       </nav>
     </header>
     <main
