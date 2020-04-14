@@ -105,7 +105,7 @@ const Table: FC<{ initialCountries: Country[] | [] }> = ({
             }}
             active={currentSortMethod === SortMethods.Area}
           >
-            Area ("mil" squared)
+            Area
           </SortableTableHeaderCell>
           <SortableTableHeaderCell
             onSortAscending={() => {
@@ -128,7 +128,7 @@ const Table: FC<{ initialCountries: Country[] | [] }> = ({
             }}
             active={currentSortMethod === SortMethods.Population}
           >
-            Population (million)
+            Population
           </SortableTableHeaderCell>
         </tr>
       </thead>
@@ -141,10 +141,10 @@ const Table: FC<{ initialCountries: Country[] | [] }> = ({
               {country.area !== undefined
                 ? `${Math.round(
                     kilometerSquaredToMilSquared(country.area)
-                  )} mil^2`
+                  )} mil²`
                 : "n/a"}
             </td>
-            <td>{(country.population / ONE_MILLION).toFixed(1)}</td>
+            <td>{(country.population / ONE_MILLION).toFixed(1)} million</td>
           </tr>
         ))}
       </tbody>
