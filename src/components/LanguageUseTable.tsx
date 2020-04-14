@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { ONE_MILLION } from "../constants";
 
 const LanguageUseTable: FC<{ countries: Country[] }> = ({ countries }) => {
   const languageUsages: {
@@ -35,7 +36,10 @@ const LanguageUseTable: FC<{ countries: Country[] }> = ({ countries }) => {
           <tr key={languageName}>
             <td>{languageName}</td>
             <td>{languageUsages[languageName].countries.join(", ")}</td>
-            <td>{languageUsages[languageName].speakers}</td>
+            <td>
+              {(languageUsages[languageName].speakers / ONE_MILLION).toFixed(1)}{" "}
+              million
+            </td>
           </tr>
         ))}
       </tbody>
