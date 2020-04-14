@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import Table from "./Table";
 import { downloadListOfCountries } from "../utils";
 import SummaryTable from "./SummaryTable";
+import LanguageUseTable from "./LanguageUseTable";
 
 function App() {
   const [countries, setCountries] = useState<Country[] | []>([]);
@@ -27,6 +28,7 @@ function App() {
   return (
     <Layout>
       <SummaryTable countries={countries} />
+      <LanguageUseTable countries={countries} />
       <Table initialCountries={countries} />
     </Layout>
   );
