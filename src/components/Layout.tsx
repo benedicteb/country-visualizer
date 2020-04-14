@@ -8,7 +8,9 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => (
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        paddingLeft: "15px",
+        paddingRight: "15px"
       }}
     >
       <h1 style={{ padding: 0, margin: 0 }}>
