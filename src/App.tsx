@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Layout from "./Layout";
+import Table from "./Table";
+
+const URL = "https://restcountries.eu/rest/v2/all";
+
+const downloadListOfCountries = (): Promise<Country[]> => {
+  return fetch(URL)
+    .then(response => {
+      if (!response.ok) {
+        throw Error("Unable to fetch countries");
+      }
+
+      return response.json();
+    })
+    .then(json => json as Country[]);
+};
 
 function App() {
+  const initialCountries: Country[] = [];
+  const [countries, setCountries] = useState(initialCountries);
+
+  useEffect(() => {
+    const asyncEffect = async () => {
+      const countries = await downloadListOfCountries();
+
+      setCountries(countries);
+    };
+
+    asyncEffect();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Table countries={countries} />
+    </Layout>
   );
 }
 
